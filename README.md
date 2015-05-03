@@ -5,19 +5,19 @@ Toy Robot
 
 Toy Robot is a minimalistic toy robot Java 1.8 WIP almost conforming to the specifications from the [problem description](PROBLEM.md).
 
-Test and build using a recent version of maven.
+Test and build using a recent version of gradle.
 
 
 Testing
 -------
 
-`mvn test`
+`gradle test`
 
 Building
 --------
 
 ```
-mvn package
+gradle build
 ```
 
 Running
