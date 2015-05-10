@@ -1,5 +1,6 @@
 package com.lauchlin.toyrobot;
 import com.lauchlin.toyrobot.Util.*;
+import java.util.List;
 
 public class Robot {
 
@@ -14,31 +15,33 @@ public class Robot {
     this.table = table;
   }
 
-  public Robot move() {
-    return this.place(this.location.plus(new Point(Math.sin(Math.PI * facing),
+  public void move() {
+    this.place(this.location.plus(new Point(Math.sin(Math.PI * facing),
                                             Math.cos(Math.PI * facing))),
-                      this.facing,
-                      this.table);
+               this.facing,
+               this.table);
   }
 
-  public Robot left() {
-    return this.place(this.location, Util.fmod(this.facing - 0.5, 2.0), this.table);
+  public void left() {
+    this.place(this.location, Util.fmod(this.facing - 0.5, 2.0), this.table);
   }
 
-  public Robot right() {
-    return this.place(this.location, Util.fmod(this.facing + 0.5, 2.0), this.table);
+  public void right() {
+    this.place(this.location, Util.fmod(this.facing + 0.5, 2.0), this.table);
   }
 
-  public Robot report() {
-    if ( table != null ) System.out.println(this.location.toString() + "," + this.facing);
-    return this;
+  public void report(List<String> directions) {
+    if ( table != null ) System.out.println(
+                           this.location.toString() + ","
+                           + directions.get( (int) Math.round(this.facing*2.0) )
+                         );
   }
 
-  public Robot place(Point location, double facing, Table table) {
+  public void place(Point location, double facing, Table table) {
     if ( table != null && table.contains(location) ) {
-      return new Robot(location, facing, table);
-    } else {
-      return this;
+      this.table = table;
+      this.location = location;
+      this.facing = facing;
     }
   }
 
