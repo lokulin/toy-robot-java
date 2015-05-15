@@ -29,6 +29,15 @@ public class App
     private static List<String> directions = Arrays.asList("NORTH", "EAST",
                                                             "SOUTH", "WEST");
 
+    private static enum Direction {
+      NORTH,
+      EAST,
+      SOUTH,
+      WEST;
+
+      public final Direction[] vals = Direction.values();
+    }
+
     public App() {
         this.robot = new Robot(new Point(0,0), 0.0, null);
     }
@@ -51,7 +60,7 @@ public class App
                 && m.group("dir") != null) {
               robot.place(new Point(Float.parseFloat(m.group("x"))
                                    ,Float.parseFloat(m.group("y")))
-                          , directions.indexOf(m.group("dir"))/2.0
+                          , Direction.valueOf(m.group("dir")).ordinal()/2.0
                           , table);
             }
             break;
