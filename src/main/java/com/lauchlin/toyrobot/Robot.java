@@ -1,5 +1,4 @@
 package com.lauchlin.toyrobot;
-import com.lauchlin.toyrobot.Util.*;
 import java.util.List;
 
 public class Robot {
